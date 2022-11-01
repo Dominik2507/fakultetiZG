@@ -1,1 +1,322 @@
-[{"ime":"Fakultet elektrotehnike i računarstva","adresa":"Unska 3, 10000 Zagreb","dekan":"prof. dr. sc. Vedran Bilas","eadresa":"dekanat@fer.hr","faks":"+385 1 617 00 07","telefon":"+385 1 612 99 99","webadresa":"www.fer.unizg.hr","id":1,"studiji":[{"imestudija":"Elektrotehnika i informacijska tehnologija i Računarstvo","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":1}, {"imestudija":"Računarstvo","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":1}]}, {"ime":"Agronomski fakultet","adresa":"Svetošimunska 25, 10000 Zagreb","dekan":"prof. dr. sc. Ivica Kisić","eadresa":"dekanat@agr.hr","faks":"+385 1 231 53 00","telefon":"+385 1 239 37 77","webadresa":"www.agr.unizg.hr","id":2,"studiji":[{"imestudija":"Agrarna ekonomika","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":2}, {"imestudija":"Animalne znanosti","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":2}, {"imestudija":"Hortikultura","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":2}]}, {"ime":"Arhitektonski fakultet","adresa":"Fra Andrije Kačića Miošića 26, 10000 Zagreb","dekan":"prof. dr. sc. Bojan Baletić","eadresa":"dekan@arhitekt.hr","faks":"+385 1 463 98 10","telefon":"+385 1 463 92 22","webadresa":"www.arhitekt.unizg.hr","id":3,"studiji":[{"imestudija":"Arhitektura i urbanizam","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":3}, {"imestudija":"Arhitektura i urbanizam","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":3}, {"imestudija":"Dizajn","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":3}]}, {"ime":"Ekonomski fakultet","adresa":"Kennedyjev trg 6, 10000 Zagreb","dekan":"izv. prof. dr. sc. Sanja Sever Mališ","eadresa":"dean@efzg.hr","faks":"+385 1 230 84 72","telefon":"+385 1 238 33 33","webadresa":"www.efzg.unizg.hr","id":4,"studiji":[{"imestudija":"Ekonomija","razinastudija":"preddiplomski","brojsemestara":8,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":4}, {"imestudija":"Poduzetništvo","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"izvanredni","akgodina":2022,"fakultetid":4}, {"imestudija":"Poslovna ekonomija","razinastudija":"diplomski","brojsemestara":2,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":4}]}, {"ime":"Fakultet strojarstva i brodogradnje","adresa":"Ivana Lučića 5, 10000 Zagreb","dekan":"prof. dr. sc. Zdenko Tonković","eadresa":"fsb@fsb.hr","faks":"+385 1 615 69 40","telefon":"+385 1 616 82 22","webadresa":"www.fsb.unizg.hr","id":5,"studiji":[{"imestudija":"Brodogradnja","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":5}, {"imestudija":"Strojarstvo","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":5}, {"imestudija":"Strojarstvo","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":5}]}, {"ime":"Fakultet organizacije i informatike","adresa":"Pavlinska 2, 42000 Varaždin","dekan":"prof. dr. sc. Nina Begičević Ređep","eadresa":"ured-dekana@foi.hr","faks":"+385 42 213 413","telefon":"+385 42 390 800","webadresa":"www.foi.unizg.hr","id":6,"studiji":[{"imestudija":"Informacijski i poslovni sustavi","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"izvanredni","akgodina":2022,"fakultetid":6}, {"imestudija":"Informacijski i poslovni sustavi","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":6}, {"imestudija":"Informatika u obrazovanju","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":6}]}, {"ime":"Farmaceutsko-biokemijski fakultet","adresa":"Ante Kovačića 1, 10000 Zagreb","dekan":"izv. prof. dr. sc. Jasmina Lovrić","eadresa":"dekanat@pharma.hr","faks":"+385 1 639 44 00","telefon":"+385 1 481 82 88","webadresa":"www.pharma.unizg.hr","id":7,"studiji":[{"imestudija":"Farmacija","razinastudija":"integrirani preddiplomski i diplomski sveučilišni","brojsemestara":10,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":7}, {"imestudija":"Medicinska biokemija","razinastudija":"integrirani preddiplomski i diplomski sveučilišni","brojsemestara":10,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":7}]}, {"ime":"Geodetski fakultet","adresa":"Kačićeva 26, 10000 Zagreb","dekan":"izv. prof. dr. sc. Almin Đapo","eadresa":"dekan@geof.hr","faks":"+385 1 482 80 81","telefon":"+385 1 463 92 22","webadresa":"www.geof.unizg.hr","id":8,"studiji":[{"imestudija":"Geodezija i geoinformatika","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":8}, {"imestudija":"Geodezija i geoinformatika","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":8}]}, {"ime":"Građevinski fakultet","adresa":"Fra Andrije Kačića Miošića 26, 10000 Zagreb","dekan":"izv. prof. dr. sc. Domagoj Damjanović","eadresa":"ured_dekana@grad.hr","faks":"+385 1 463 92 06","telefon":"+385 1 463 92 22","webadresa":"www.grad.unizg.hr","id":9,"studiji":[{"imestudija":"Građevinarstvo","razinastudija":"diplomski","brojsemestara":4,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":9}, {"imestudija":"Građevinarstvo","razinastudija":"preddiplomski","brojsemestara":6,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":9}]}, {"ime":"Kineziološki fakultet","adresa":"Horvaćanski zavoj 15, 10000 Zagreb","dekan":"izv. prof. dr. sc. Mario Baić","eadresa":"dekanat@kif.hr","faks":"+385 1 363 41 46","telefon":"+385 1 365 86 66","webadresa":"www.kif.unizg.hr","id":10,"studiji":[{"imestudija":"Kineziologija","razinastudija":"integrirani preddiplomski i diplomski sveučilišni","brojsemestara":10,"nacinizvedbe":"redovan","akgodina":2022,"fakultetid":10}, {"imestudija":"Kineziologija","razinastudija":"poslijediplomski doktorski sveučilišni","brojsemestara":6,"nacinizvedbe":"izvanredni","akgodina":2022,"fakultetid":10}]}]
+[
+	{
+		"ime": "Fakultet elektrotehnike i računarstva",
+		"adresa": "Unska 3, 10000 Zagreb",
+		"dekan": "prof. dr. sc. Vedran Bilas",
+		"eadresa": "dekanat@fer.hr",
+		"faks": "+385 1 617 00 07",
+		"telefon": "+385 1 612 99 99",
+		"webadresa": "www.fer.unizg.hr",
+		"id": 1,
+		"studiji": [
+			{
+				"imestudija": "Elektrotehnika i informacijska tehnologija i Računarstvo",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 1
+			},
+			{
+				"imestudija": "Računarstvo",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 1
+			}
+		]
+	},
+	{
+		"ime": "Agronomski fakultet",
+		"adresa": "Svetošimunska 25, 10000 Zagreb",
+		"dekan": "prof. dr. sc. Ivica Kisić",
+		"eadresa": "dekanat@agr.hr",
+		"faks": "+385 1 231 53 00",
+		"telefon": "+385 1 239 37 77",
+		"webadresa": "www.agr.unizg.hr",
+		"id": 2,
+		"studiji": [
+			{
+				"imestudija": "Agrarna ekonomika",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 2
+			},
+			{
+				"imestudija": "Animalne znanosti",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 2
+			},
+			{
+				"imestudija": "Hortikultura",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 2
+			}
+		]
+	},
+	{
+		"ime": "Arhitektonski fakultet",
+		"adresa": "Fra Andrije Kačića Miošića 26, 10000 Zagreb",
+		"dekan": "prof. dr. sc. Bojan Baletić",
+		"eadresa": "dekan@arhitekt.hr",
+		"faks": "+385 1 463 98 10",
+		"telefon": "+385 1 463 92 22",
+		"webadresa": "www.arhitekt.unizg.hr",
+		"id": 3,
+		"studiji": [
+			{
+				"imestudija": "Arhitektura i urbanizam",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 3
+			},
+			{
+				"imestudija": "Arhitektura i urbanizam",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 3
+			},
+			{
+				"imestudija": "Dizajn",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 3
+			}
+		]
+	},
+	{
+		"ime": "Ekonomski fakultet",
+		"adresa": "Kennedyjev trg 6, 10000 Zagreb",
+		"dekan": "izv. prof. dr. sc. Sanja Sever Mališ",
+		"eadresa": "dean@efzg.hr",
+		"faks": "+385 1 230 84 72",
+		"telefon": "+385 1 238 33 33",
+		"webadresa": "www.efzg.unizg.hr",
+		"id": 4,
+		"studiji": [
+			{
+				"imestudija": "Ekonomija",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 8,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 4
+			},
+			{
+				"imestudija": "Poduzetništvo",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "izvanredni",
+				"akgodina": 2022,
+				"fakultetid": 4
+			},
+			{
+				"imestudija": "Poslovna ekonomija",
+				"razinastudija": "diplomski",
+				"brojsemestara": 2,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 4
+			}
+		]
+	},
+	{
+		"ime": "Fakultet strojarstva i brodogradnje",
+		"adresa": "Ivana Lučića 5, 10000 Zagreb",
+		"dekan": "prof. dr. sc. Zdenko Tonković",
+		"eadresa": "fsb@fsb.hr",
+		"faks": "+385 1 615 69 40",
+		"telefon": "+385 1 616 82 22",
+		"webadresa": "www.fsb.unizg.hr",
+		"id": 5,
+		"studiji": [
+			{
+				"imestudija": "Brodogradnja",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 5
+			},
+			{
+				"imestudija": "Strojarstvo",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 5
+			},
+			{
+				"imestudija": "Strojarstvo",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 5
+			}
+		]
+	},
+	{
+		"ime": "Fakultet organizacije i informatike",
+		"adresa": "Pavlinska 2, 42000 Varaždin",
+		"dekan": "prof. dr. sc. Nina Begičević Ređep",
+		"eadresa": "ured-dekana@foi.hr",
+		"faks": "+385 42 213 413",
+		"telefon": "+385 42 390 800",
+		"webadresa": "www.foi.unizg.hr",
+		"id": 6,
+		"studiji": [
+			{
+				"imestudija": "Informacijski i poslovni sustavi",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "izvanredni",
+				"akgodina": 2022,
+				"fakultetid": 6
+			},
+			{
+				"imestudija": "Informacijski i poslovni sustavi",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 6
+			},
+			{
+				"imestudija": "Informatika u obrazovanju",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 6
+			}
+		]
+	},
+	{
+		"ime": "Farmaceutsko-biokemijski fakultet",
+		"adresa": "Ante Kovačića 1, 10000 Zagreb",
+		"dekan": "izv. prof. dr. sc. Jasmina Lovrić",
+		"eadresa": "dekanat@pharma.hr",
+		"faks": "+385 1 639 44 00",
+		"telefon": "+385 1 481 82 88",
+		"webadresa": "www.pharma.unizg.hr",
+		"id": 7,
+		"studiji": [
+			{
+				"imestudija": "Farmacija",
+				"razinastudija": "integrirani preddiplomski i diplomski sveučilišni",
+				"brojsemestara": 10,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 7
+			},
+			{
+				"imestudija": "Medicinska biokemija",
+				"razinastudija": "integrirani preddiplomski i diplomski sveučilišni",
+				"brojsemestara": 10,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 7
+			}
+		]
+	},
+	{
+		"ime": "Geodetski fakultet",
+		"adresa": "Kačićeva 26, 10000 Zagreb",
+		"dekan": "izv. prof. dr. sc. Almin Đapo",
+		"eadresa": "dekan@geof.hr",
+		"faks": "+385 1 482 80 81",
+		"telefon": "+385 1 463 92 22",
+		"webadresa": "www.geof.unizg.hr",
+		"id": 8,
+		"studiji": [
+			{
+				"imestudija": "Geodezija i geoinformatika",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 8
+			},
+			{
+				"imestudija": "Geodezija i geoinformatika",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 8
+			}
+		]
+	},
+	{
+		"ime": "Građevinski fakultet",
+		"adresa": "Fra Andrije Kačića Miošića 26, 10000 Zagreb",
+		"dekan": "izv. prof. dr. sc. Domagoj Damjanović",
+		"eadresa": "ured_dekana@grad.hr",
+		"faks": "+385 1 463 92 06",
+		"telefon": "+385 1 463 92 22",
+		"webadresa": "www.grad.unizg.hr",
+		"id": 9,
+		"studiji": [
+			{
+				"imestudija": "Građevinarstvo",
+				"razinastudija": "diplomski",
+				"brojsemestara": 4,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 9
+			},
+			{
+				"imestudija": "Građevinarstvo",
+				"razinastudija": "preddiplomski",
+				"brojsemestara": 6,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 9
+			}
+		]
+	},
+	{
+		"ime": "Kineziološki fakultet",
+		"adresa": "Horvaćanski zavoj 15, 10000 Zagreb",
+		"dekan": "izv. prof. dr. sc. Mario Baić",
+		"eadresa": "dekanat@kif.hr",
+		"faks": "+385 1 363 41 46",
+		"telefon": "+385 1 365 86 66",
+		"webadresa": "www.kif.unizg.hr",
+		"id": 10,
+		"studiji": [
+			{
+				"imestudija": "Kineziologija",
+				"razinastudija": "integrirani preddiplomski i diplomski sveučilišni",
+				"brojsemestara": 10,
+				"nacinizvedbe": "redovan",
+				"akgodina": 2022,
+				"fakultetid": 10
+			},
+			{
+				"imestudija": "Kineziologija",
+				"razinastudija": "poslijediplomski doktorski sveučilišni",
+				"brojsemestara": 6,
+				"nacinizvedbe": "izvanredni",
+				"akgodina": 2022,
+				"fakultetid": 10
+			}
+		]
+	}
+]
