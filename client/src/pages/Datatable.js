@@ -47,7 +47,7 @@ const Datatable = (props) => {
       setFakultetiList(item.fakulteti);
       let columnsTemp=[];
       
-      Object.keys(item.fakulteti[0]).forEach(key => columnsTemp.push({name: key, selector: (row)=>row[key]}))
+      Object.keys(item.fakulteti[0]).forEach(key => columnsTemp.push({name: key, selector: (row)=>row[key], wrap: true}))
       console.log(columnsTemp)
       setColumns(columnsTemp);
     });

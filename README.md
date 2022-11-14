@@ -1,5 +1,5 @@
 # FakultetiZG
-## Fakulteti Sveucilista u Zagrebu v1.0
+## Fakulteti Sveucilista u Zagrebu v2.0
 
 ### Autor:  
   - Dominik Juršić  

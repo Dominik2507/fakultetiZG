@@ -15,7 +15,8 @@ const Home = (props) => {
           <div>Tablički prikaz podataka: <a href="/datatable"> DATATABLE</a></div>
           <div>Podatci u CSV formatu: <a href="./file.csv" download="fakulteti" target="_blank">preuzmi-CSV</a></div>
           <div>Podatci u JSON formatu: <a href="./file.json" download="fakulteti" target="_blank">preuzmi-JSON</a></div><br/>
-          Podatci se nalaze u lokalnoj bazi podataka koja sadrži dvije tablice (Fakultet i Smjer). 
+          <div>* Podatci zadnje ažurirani: 30.11.2022.</div>
+          <br></br>Podatci se nalaze u lokalnoj bazi podataka koja sadrži dvije tablice (Fakultet i Smjer). 
           Tablica Fakultet sadrži osnovne informacije o fakultetima. 
           Tablica Smjer sadrži zapise o smjerovima za fakultete navedene u tablici Fakultet. <br/><br/>
           Podatke sam našao na stranici ISVU-a (INFORMACIJSKI SUSTAV VISOKIH UČILIŠTA). <br/>
