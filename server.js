@@ -126,7 +126,7 @@ app.post("/createCSVFile",jsonParser, async (req, res) =>{
     }else filterLines += "UPPER(" + filterOption + " :: TEXT) " + " LIKE " + "'%" +filter.toUpperCase()+"%'";
     
     let upit=`SELECT * FROM fakultet left join smjer on id=fakultetId WHERE ${filterLines}`;
-    const sqlQuery = `COPY (${upit}) TO 'D:/otvarac/webApp/client/public/naziv.csv' DELIMITER ',' CSV HEADER;`;
+    const sqlQuery = `COPY (${upit}) TO 'D:/otvarac/fakultetiZG/client/public/naziv.csv' DELIMITER ',' CSV HEADER;`;
     
     console.log(sqlQuery)
     //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
@@ -188,11 +188,12 @@ app.post("/createJSONFile",jsonParser, async (req, res) =>{
         FROM filteredView
         WHERE ${filterLines} ${filterLines2}
     );
-    COPY (SELECT json_agg(row_to_json(filteredView2)) FROM filteredView2 ) TO 'D:/otvarac/webApp/client/public/naziv.json';
+    COPY (SELECT json_agg(row_to_json(filteredView2)) FROM filteredView2 ) TO 'D:/otvarac/fakultetiZG/client/public/naziv.json';
     `;
     const sqlQuery = `${upit}`;
     
     console.log(sqlQuery)
+    
     //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
     
     try {
