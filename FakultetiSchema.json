@@ -1,0 +1,170 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"$id": "http://fakultetiZG.hr/fakultetiZG.json",
+	"type": "array",
+	"default": [],
+	"title": "Fakulteti ZG",
+	"description": "Skup fakulteta Sveučilišta u Zagrebu.",
+	"items": {
+		"type": "object",
+		"default": {},
+		"title": "Fakultet",
+		"description": "Objekt koji opisuje pojedini fakultet.",
+		"required": [
+			"ime",
+			"adresa",
+			"dekan",
+			"eadresa",
+			"faks",
+			"telefon",
+			"webadresa",
+			"id",
+			"studiji"
+		],
+		"properties": {
+			"ime": {
+				"type": "string",
+				"default": "",
+				"title": "ime",
+				"description": "Potpuno ime fakulteta.",
+				"examples": [
+					"Fakultet elektrotehnike i računarstva"
+				]
+			},
+			"adresa": {
+				"type": "string",
+				"default": "",
+				"title": "adresa",
+				"description": "Adresa fakulteta.",
+				"examples": [
+					"Unska 3, 10000 Zagreb"
+				]
+			},
+			"dekan": {
+				"type": "string",
+				"default": "",
+				"title": "dekan",
+				"description": "Ime dekana fakulteta.",
+				"examples": [
+					"prof. dr. sc. Vedran Bilas"
+				]
+			},
+			"eadresa": {
+				"type": "string",
+				"default": "",
+				"title": "eadresa",
+				"description": "Elektornička adresa fakulteta.",
+				"examples": [
+					"dekanat@fer.hr"
+				]
+			},
+			"faks": {
+				"type": "string",
+				"default": "",
+				"title": "faks",
+				"description": "Faks kontakt fakulteta.",
+				"examples": [
+					"+385 1 617 00 07"
+				]
+			},
+			"telefon": {
+				"type": "string",
+				"default": "",
+				"title": "telefon",
+				"description": "Telefonski kontakt fakulteta.",
+				"examples": [
+					"+385 1 612 99 99"
+				]
+			},
+			"webadresa": {
+				"type": "string",
+				"default": "",
+				"title": "webadresa",
+				"description": "Web lokacija fakulteta.",
+				"examples": [
+					"www.fer.unizg.hr"
+				]
+			},
+			"id": {
+				"type": "integer",
+				"default": 0,
+				"title": "id",
+				"description": "Jedinstveni identifikator pojedinog fakulteta.",
+				"examples": [
+					1
+				]
+			},
+			"studiji": {
+				"type": "array",
+				"default": [],
+				"title": "studiji",
+				"description": "Skup svih studijskih programa koji se izvode na pojedinom fakultetu.",
+				"items": {
+					"type": "object",
+					"title": "studiji",
+					"required": [
+						"imestudija",
+						"razinastudija",
+						"brojsemestara",
+						"nacinizvedbe",
+						"akgodina",
+						"fakultetid"
+					],
+					"properties": {
+						"imestudija": {
+							"type": "string",
+							"title": "imestudija",
+							"description": "Ime pojedinog studijskog programa.",
+							"examples": [
+								"Elektrotehnika i informacijska tehnologija i Računarstvo",
+								"Računarstvo"
+							]
+						},
+						"razinastudija": {
+							"type": "string",
+							"title": "razinastudija",
+							"description": "Razina studijskog programa.",
+							"examples": [
+								"preddiplomski",
+								"diplomski"
+							]
+						},
+						"brojsemestara": {
+							"type": "integer",
+							"title": "brojsemestara",
+							"description": "Trajanje pojedinog studijskog programa.",
+							"examples": [
+								6,
+								4
+							]
+						},
+						"nacinizvedbe": {
+							"type": "string",
+							"title": "nacinizvedbe",
+							"description": "Nacin izvedbe studijskog programa.",
+							"examples": [
+								"redovan"
+							]
+						},
+						"akgodina": {
+							"type": "integer",
+							"title": "akgodina",
+							"description": "Akademska godina izvedbe studija.",
+							"examples": [
+								2022
+							]
+						},
+						"fakultetid": {
+							"type": "integer",
+							"title": "fakultetid",
+							"description": "Jedinstveni identifikator fakulteta na kojem se izvodi studijski program.",
+							"examples": [
+								1
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+}
