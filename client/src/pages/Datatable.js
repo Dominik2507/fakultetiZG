@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import { getFakulteti, getFakultetiWithSmjer, exportCSV, exportJSON } from "../utils/fetchFunctions";
@@ -7,7 +8,7 @@ import { getFakulteti, getFakultetiWithSmjer, exportCSV, exportJSON } from "../u
 
 import DataTable from 'react-data-table-component';
 
-
+const BASE_URL="http://localhost:3000/fakultet/"
 
 
 const Datatable = (props) => {
@@ -15,7 +16,8 @@ const Datatable = (props) => {
   const [columns, setColumns] = useState([]);
   const [filter, setFilter] = useState("");
   const [filterOption, setFilterOption]= useState("wildcard");
-  
+ 
+  const navigate=useNavigate()
   
   
   //console.log(columns)
@@ -44,22 +46,25 @@ const Datatable = (props) => {
   useEffect(() => {
     const res = getFakultetiWithSmjer().then((item) => {
       //console.log(item.fakulteti[0])
+      
       setFakultetiList(item.fakulteti);
       let columnsTemp=[];
       
       Object.keys(item.fakulteti[0]).forEach(key => columnsTemp.push({name: key, selector: (row)=>row[key], wrap: true}))
-      console.log(columnsTemp)
+      //console.log(columnsTemp)
+      
       setColumns(columnsTemp);
     });
   }, []);
    
   let handleChange=(event)=>{
-    console.log(event.target.value)
+    //console.log(event.target.value)
     setFilter(event.target.value);
 
   }
+  
   return (<>
-    <TableSection>
+    <TableSection id="table">
       <h1>Tablični prikaz podataka</h1>
       <a href="/"> Vrati se na naslovnicu</a>
       <h2>Prikaz podataka:</h2>
@@ -71,16 +76,19 @@ const Datatable = (props) => {
           <input type="text" name="filter" id="filter" placeholder="filtriraj" value={filter} onChange={(event)=>{handleChange(event)}}></input>
           <ExportButton onClick={()=>exportCSV(filterOption, filter)}> EXPORT CSV</ExportButton>
         <ExportButton onClick={()=>exportJSON(filterOption, filter)}> EXPORT JSON</ExportButton>
+        <ExportButton onClick={()=>navigate("/create")}> CREATE NEW</ExportButton>
         </form>
         
         <a hidden id="exportCSV" href="./naziv.csv" download="fakulteti" target="_blank"></a>
         <a hidden id="exportJSON" href="./naziv.json" download="fakulteti" target="_blank"></a>
         </TableSection>
         <DataTable
+            onRowClicked={(row)=>{navigate(`/fakultet/${row.faksid}`)}}
             columns={columns}
             data={faksArray}
             pagination
             highlightOnHover
+            pointerOnHover
           
         />
     </>

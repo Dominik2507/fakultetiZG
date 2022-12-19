@@ -1,0 +1,167 @@
+{
+    "openapi": "2.0.0",
+    "info": {
+        "title": "Fakulteti ZG",
+        "description": "Skup fakulteta Sveučilišta u Zagrebu.",
+        "version": "1.0.0",
+        "contact": {
+            "name":"Dominik",
+            "url": "https://google.com",
+            "email": "dj52970@fer.hr"
+        },
+        "licence":{
+            "name":"Open Licence - The Republic of Croatia",
+            "url": "https://dzs.gov.hr/UserDocsImages/dokumenti/Dokumenti/Open%20Licence.pdf?vel=244016"
+        }
+    },
+    "paths":{
+        "/getFaksWithSmjers":{
+            "get": {
+                "summary": "Get the whole collection",
+                "description": "Returns a filed of collections",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "500":{
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/fakultet/{id}":{
+            "get": {
+                "summary": "Gets the resource from collection by ID",
+                "description": "Returns a field of collection and its subitems",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "400":{
+                        "description": "Id was written wrong"
+                    },
+                    "404":{
+                        "description":"Resorce not found"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add a resource to the collection",
+                "description": "Returns a number of succesfull inserts",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Insert Succesful"
+                    },
+                    "500":{
+                        "description": "Insert not succesfull"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update a resource in collection with given ID",
+                "description": "Returns a number of succesfull updates",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Update succesful"
+                    },
+                    "400":{
+                        "description": "Id was written wrong"
+                    },
+                    "404":{
+                        "description":"Resorce not found"
+                    },
+                    "500":{
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletes a resource with the given ID",
+                "description": "Returns a number of succesfull deletes",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Delete succesful"
+                    },
+                    "400":{
+                        "description": "Id was written wrong"
+                    },
+                    "404":{
+                        "description":"Resorce not found"
+                    },
+                    "500":{
+                        "description": "Internal server error"
+                    }
+                }
+            }
+
+        },
+        "/getFaks":{
+            "get": {
+                "summary": "Gets a collection of Fakulteti",
+                "description": "Returns a field of Fakulteti",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/getSmjer":{
+            "get": {
+                "summary": "Gets a collection of Smjerovi",
+                "description": "Returns a field of Smjerovi",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/getFaksWithSmjersJson":{
+            "get": {
+                "summary": "Gets a JSON object with the whole collection",
+                "description": "Returns a JSON object",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        },
+        "/getOpenAPI":{
+            "get": {
+                "summary": "Gets a JSON object with the whole collection",
+                "description": "Returns a JSON object",
+                "produces": ["aplication/json"],
+                "responses": {
+                    "200": {
+                        "description": "Fetch succesful"
+                    },
+                    "500":{
+                        "description":"Internal server error"
+                    }
+                }
+            }
+        }
+    }
+}

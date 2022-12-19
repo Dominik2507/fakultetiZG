@@ -1,25 +1,34 @@
 
+const OpenApi = require("./openapi.json")
 const express = require('express'); //Line 1
 var bodyParser = require('body-parser')
 const app = express(); //Line 2
 const port = process.env.PORT || 5000; //Line 3
 const pg = require('pg')
 const session = require('express-session')
-const db = require('./db')
+const db = require('./db');
+const { response } = require('express');
 const pgSession = require('connect-pg-simple')(session)
 
 var jsonParser = bodyParser.json()
 
 
+/*
+    3. lab 
 
+    +   jednu GET krajnju točku za dohvaćanje cjelokupne kolekcije vaših podataka.
+    ?   jednu GET krajnju točku za dohvaćanje pojedinačnog resursa iz kolekcije temeljem jedinstvenog identifikatora resursa.
+    +   barem tri dodatne GET krajnje točke po vlastitom odabiru.
+    ?   jednu POST krajnju točku za ubacivanje pojedinačnog resursa u kolekciju.
+    ?   jednu PUT krajnju točku kojom će se osvježiti elementi resursa.
+    ?   jednu DELETE krajnju točku za brisanje pojedinog resursa iz kolekcije temeljem jedinstvenog identifikatora resursa.
+*/
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
-// create a GET route
-//Line 11
 
-//middleware - dekodiranje parametara
 app.use(express.urlencoded({ extended: true }));
+
 
 app.use(session({  //inicijalizira express-session middleware
     store: new pgSession({
@@ -30,40 +39,7 @@ app.use(session({  //inicijalizira express-session middleware
     saveUninitialized: true
 }))
 
-/* app.use((req, res, next) => {  
-    if (req.session.cart === undefined || req.session.cart.invalid) {
-        req.session.cart = cart.createCart();
-    }
-    next();
-}) */
-
-app.get('/express_backend', (req, res) => { //Line 9
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-  }); 
-
-app.get('/getFaks',async (req, res) => { //Line 9
-    
-    const sqlQuery = `SELECT * FROM fakultet;`;
-    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-    try {
-        const resultFaks = (await db.query(sqlQuery, [])).rows;
-        res.send({fakulteti: resultFaks});
-    } catch (err) {
-        console.log(err);
-    } 
-});
-
-app.get('/getSmjer',async (req, res) => { //Line 9
-    
-    const sqlQuery = `SELECT * FROM smjer;`;
-    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-    try {
-        const resultFaks = (await db.query(sqlQuery, [])).rows;
-        res.send({smjerovi: resultFaks});
-    } catch (err) {
-        console.log(err);
-    } 
-});
+//jednu GET krajnju točku za dohvaćanje cjelokupne kolekcije vaših podataka
 app.get('/getFaksWithSmjers',async (req, res) => { //Line 9
     
     const sqlQuery = `SELECT fakultet.id as faksId, 
@@ -74,14 +50,82 @@ app.get('/getFaksWithSmjers',async (req, res) => { //Line 9
                 faks,
                 telefon,
                 webadresa,smjer.* FROM fakultet left join smjer on fakultet.id=smjer.fakultetId;`;
-    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows;
+        const count= resultFaks.length;
+        res.status(200);
         res.send({fakulteti: resultFaks});
     } catch (err) {
+        res.status(500)
+        console.log(err);
+        res.send(err); 
+        
+    } 
+});
+
+//jednu GET krajnju točku za dohvaćanje pojedinačnog resursa iz kolekcije temeljem jedinstvenog identifikatora resursa
+app.get('/fakultet/:id',async (req, res) => { //Line 9
+    
+    let id=parseInt(req.params.id);
+    if(id.toString()==="NaN"){
+        res.status(400).send("KRIVI ID");
+        return;
+    }
+    
+    const sqlQuery = `SELECT fakultet.id as faksId, 
+                    fakultet.ime,
+                    adresa,
+                    dekan,
+                    eadresa,
+                    faks,
+                    telefon,
+                    webadresa,smjer.* 
+                FROM fakultet left join smjer on fakultet.id=smjer.fakultetId
+                WHERE fakultet.id=${id};`;
+    
+    try {
+        const resultFaks = (await db.query(sqlQuery, [])).rows;
+        const count= resultFaks.length;
+        if(count===0){
+            res.status(404).send(null);
+        }
+        res.status(200).send({fakulteti: resultFaks});
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Greška kod povezivanja s bazom");
+    } 
+});
+
+//##########################################
+//3 get metode po izboru
+app.get('/getFaks',async (req, res) => { 
+    
+    const sqlQuery = `SELECT * FROM fakultet;`;
+
+    try {
+        const resultFaks = (await db.query(sqlQuery, [])).rows;
+        res.status(200).send({fakulteti: resultFaks});
+    } catch (err) {
+        res.status(500).send(err)
         console.log(err);
     } 
 });
+
+app.get('/getSmjer',async (req, res) => { //Line 9
+    
+    const sqlQuery = `SELECT * FROM smjer;`;
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    try {
+        const resultFaks = (await db.query(sqlQuery, [])).rows;
+        res.status(200).send({smjerovi: resultFaks});
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    } 
+});
+
+
 app.get('/getFaksWithSmjersJSON',async (req, res) => { //Line 9
     
     const sqlQuery = `SELECT json_agg(row_to_json(fakultetsmjerjson)) as fakulteti
@@ -89,12 +133,119 @@ app.get('/getFaksWithSmjersJSON',async (req, res) => { //Line 9
     //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows[0];
+        res.status(200).send(resultFaks);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    } 
+});
+//#####################################################
+
+//jednu POST krajnju točku za ubacivanje pojedinačnog resursa u kolekciju.
+app.post("/fakultet", jsonParser, async (req, res) => {
+
+    let body=req.body;
+    console.log(JSON.stringify(body))
+    let query=`INSERT INTO 
+            fakultet(ime, adresa, dekan, eadresa, faks, telefon, webadresa)
+            VALUES ('${body.ime}', '${body.adresa}','${body.dekan}', '${body.eadresa}','${body.faks}','${body.telefon}','${body.webadresa}');`
+console.log(query)
+    try {
+        const resultFaks = (await db.query(query, []));
+        
+        res.status(200).send(resultFaks);
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+    } 
+})
+
+
+//jednu PUT krajnju točku kojom će se osvježiti elementi resursa.
+
+app.put("/fakultet", jsonParser, async (req,res) => {
+    let id=req.body.id;
+    console.log("Poslani id je: " +id)
+    let checkIfExists= `Select * FROM fakultet WHERE id=${id}`
+
+    try {
+        const number = (await db.query(checkIfExists, [])).rowCount;
+        console.log(number)
+        if(number!=1){
+            res.status(404)//.statusMessage="Ne postoji fakultet za dani id."
+            res.send(null);
+            return;
+        }
+       
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+        return;
+    } 
+
+    let query=`UPDATE fakultet
+            SET ime='${req.body.ime}',
+                adresa='${req.body.adresa}',
+                dekan='${req.body.dekan}',
+                eadresa='${req.body.eadresa}',
+                faks='${req.body.faks}',
+                telefon='${req.body.telefon}',
+                webadresa='${req.body.webadresa}'
+            WHERE fakultet.id = ${id};`
+
+    try {
+        const resultFaks = (await db.query(query, []));
+        res.status(200);
         res.send(resultFaks);
     } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+    } 
+
+})
+
+//jednu DELETE krajnju točku za brisanje pojedinog resursa iz kolekcije temeljem jedinstvenog identifikatora resursa.
+app.delete('/fakultet/:id',async (req, res) => {
+    let id=parseInt(req.params.id);
+    if(id.toString()==="NaN"){
+        res.status(400).send("KRIVI ID");
+        return;
+    }
+    let checkIfExists= `Select * FROM fakultet WHERE id=${id}`
+
+    try {
+        const number = (await db.query(checkIfExists, [])).rowCount;
+        console.log(number)
+        if(number!=1){
+            res.status(404)//.statusMessage="Ne postoji fakultet za dani id."
+            res.send(null);
+            return;
+        }
+       
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+        return;
+    } 
+
+    const sqlQuery = `DELETE FROM fakultet WHERE fakultet.id=${id}`;
+    
+    try {
+        const resultFaks = (await db.query(sqlQuery, [])).rows;
+        res.status(200).send({fakulteti: resultFaks});
+    } catch (err) {
+        res.status(500).send(err)
         console.log(err);
     } 
 });
 
+
+app.get('/getOpenAPI',async (req, res) => { //Line 9
+    
+    res.status(200).json(OpenApi);
+});
+
+//danji dio nije dio 3.laboratorijske vježbe i bit će dorađen nakonadno
 app.post("/createCSVFile",jsonParser, async (req, res) =>{
     
     const dataColumns=[
@@ -204,6 +355,7 @@ app.post("/createJSONFile",jsonParser, async (req, res) =>{
     }  
 
 })
+
 
   /*
 //uvoz modula

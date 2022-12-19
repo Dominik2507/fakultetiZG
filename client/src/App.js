@@ -5,7 +5,9 @@ import "./App.css";
 
 import Home from "./pages/Home";
 import Datatable from "./pages/Datatable";
-
+import SingleItem from "./pages/SingleItem"
+import Create from "./pages/Create";
+import Update from "./pages/Update";
 
 
 const App= ()=> {
@@ -21,6 +23,21 @@ const App= ()=> {
               <Route exact path="/datatable"
                 element={
                   <Datatable/>
+                }
+              />
+              <Route exact path="/fakultet/:id"
+                element={
+                  <SingleItem/>
+                }
+              />
+              <Route exact path="/update/:id"
+                element={
+                  <Update/>
+                }
+              />
+              <Route exact path="/create"
+                element={
+                  <Create/>
                 }
               />
           </Routes>
