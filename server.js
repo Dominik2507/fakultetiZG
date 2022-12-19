@@ -68,7 +68,7 @@ app.get('/getFaksWithSmjers',async (req, res) => { //Line 9
 app.get('/fakultet/:id',async (req, res) => { //Line 9
     
     let id=parseInt(req.params.id);
-    if(id.toString()==="NaN"){
+    if(id.toString()=="NaN"){
         res.status(400).send("KRIVI ID");
         return;
     }
@@ -88,7 +88,7 @@ app.get('/fakultet/:id',async (req, res) => { //Line 9
         const resultFaks = (await db.query(sqlQuery, [])).rows;
         const count= resultFaks.length;
         if(count===0){
-            res.status(404).send(null);
+            res.status(404).send("nema zapisa s tim id-em");
         }
         res.status(200).send({fakulteti: resultFaks});
     } catch (err) {
@@ -173,7 +173,7 @@ app.put("/fakultet", jsonParser, async (req,res) => {
         console.log(number)
         if(number!=1){
             res.status(404)//.statusMessage="Ne postoji fakultet za dani id."
-            res.send(null);
+            res.send("Ne postoji fakultet za dani id.");
             return;
         }
        
@@ -207,7 +207,7 @@ app.put("/fakultet", jsonParser, async (req,res) => {
 //jednu DELETE krajnju točku za brisanje pojedinog resursa iz kolekcije temeljem jedinstvenog identifikatora resursa.
 app.delete('/fakultet/:id',async (req, res) => {
     let id=parseInt(req.params.id);
-    if(id.toString()==="NaN"){
+    if(id.toString()=="NaN"){
         res.status(400).send("KRIVI ID");
         return;
     }
@@ -218,7 +218,7 @@ app.delete('/fakultet/:id',async (req, res) => {
         console.log(number)
         if(number!=1){
             res.status(404)//.statusMessage="Ne postoji fakultet za dani id."
-            res.send(null);
+            res.send("Ne postoji fakultet za dani id.");
             return;
         }
        
