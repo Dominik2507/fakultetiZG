@@ -11,7 +11,7 @@ const Update= (props) => {
 
     const [form, handleForm] = useState(
         {
-                    id: undefined,
+                    id: 0,
                     ime:"",
                     adresa:"",
                     dekan:"",
@@ -24,7 +24,8 @@ const Update= (props) => {
 
     
     const [fakulteti, setFakultetiList] = useState([]);
-    let fakultet=fakulteti[0];
+    const [fakultet, setFakultet] = useState({});
+    
 
     useEffect(() => {
        let id=params.id
@@ -33,9 +34,9 @@ const Update= (props) => {
         //console.log(item.fakulteti[0])
         
         setFakultetiList(item.fakulteti);
-        handleForm(item.fakulteti[0])
+        setFakultet(item.fakulteti[0])
         
-      handleForm({...form, "id":id});
+        handleForm({...item.fakulteti[0], "id":id});
        
       });
     }, []);
