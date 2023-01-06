@@ -54,8 +54,19 @@ app.get('/getFaksWithSmjers',async (req, res) => { //Line 9
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows;
         const count= resultFaks.length;
+        for(let index in resultFaks){
+            resultFaks[index]["@context"]={
+                "ime": "https://schema.org/legalName",
+                "adresa": "https://schema.org/address"
+            }
+        }
         res.status(200);
-        res.send({fakulteti: resultFaks});
+        res.send({ 
+            "@context":{
+                "fakulteti":  "https://schema.org/CollegeOrUniversity"
+            },
+            fakulteti: resultFaks
+        });
     } catch (err) {
         res.status(500)
         console.log(err);
@@ -69,9 +80,26 @@ app.get('/fakultet/:id',async (req, res) => { //Line 9
     
     let id=parseInt(req.params.id);
     if(id.toString()=="NaN"){
-        res.status(400).send("KRIVI ID");
+        res.status(400).send("KRIVI ID, id mora biti broj");
         return;
     }
+
+    let checkIfExists= `Select * FROM fakultet WHERE id=${id}`
+
+    try {
+        const number = (await db.query(checkIfExists, [])).rowCount;
+        console.log(number)
+        if(number!=1){
+            res.status(404)//.statusMessage="Ne postoji fakultet za dani id."
+            res.send("Ne postoji fakultet za dani id.");
+            return;
+        }
+       
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+        return;
+    } 
     
     const sqlQuery = `SELECT fakultet.id as faksId, 
                     fakultet.ime,
@@ -90,7 +118,17 @@ app.get('/fakultet/:id',async (req, res) => { //Line 9
         if(count===0){
             res.status(404).send("nema zapisa s tim id-em");
         }
-        res.status(200).send({fakulteti: resultFaks});
+        let result=resultFaks[0]
+        result["@context"]={
+            "ime": "https://schema.org/legalName",
+            "adresa": "https://schema.org/address"
+        }
+        res.status(200).send({
+            "@context":{
+                "fakultet":  "https://schema.org/CollegeOrUniversity"
+            },
+            fakultet: result
+        });
     } catch (err) {
         console.log(err);
         res.status(500).send("Greška kod povezivanja s bazom");
@@ -105,7 +143,18 @@ app.get('/getFaks',async (req, res) => {
 
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows;
-        res.status(200).send({fakulteti: resultFaks});
+        for(let index in resultFaks){
+            resultFaks[index]["@context"]={
+                "ime": "https://schema.org/legalName",
+                "adresa": "https://schema.org/address"
+            }
+        }
+        res.status(200).send({
+            "@context":{
+                "fakulteti":  "https://schema.org/CollegeOrUniversity"
+            },
+            "fakulteti": resultFaks
+        });
     } catch (err) {
         res.status(500).send(err)
         console.log(err);
@@ -118,7 +167,18 @@ app.get('/getSmjer',async (req, res) => { //Line 9
     //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows;
-        res.status(200).send({smjerovi: resultFaks});
+        for(let index in resultFaks){
+            resultFaks[index]["@context"]={
+                "imestudija": "https://schema.org/name",
+                "razinastudija": "https://schema.org/educationalLevel"
+            }
+        }
+        res.status(200).send({
+            "@context":{
+                "smjerovi": "https://schema.org/Course"
+            },
+            "smjerovi": resultFaks
+        });
     } catch (err) {
         console.log(err);
         res.status(500).send(err);
@@ -153,7 +213,7 @@ console.log(query)
     try {
         const resultFaks = (await db.query(query, []));
         
-        res.status(200).send(resultFaks);
+        res.status(200).send("Uspješno dodano");
     } catch (err) {
         res.status(500).send(err);
         console.log(err);
@@ -222,6 +282,7 @@ app.delete('/fakultet/:id',async (req, res) => {
             return;
         }
        
+       
     } catch (err) {
         res.status(500).send(err);
         console.log(err);
@@ -232,7 +293,7 @@ app.delete('/fakultet/:id',async (req, res) => {
     
     try {
         const resultFaks = (await db.query(sqlQuery, [])).rows;
-        res.status(200).send({fakulteti: resultFaks});
+        res.status(200).send("uspjeso obrisano");
     } catch (err) {
         res.status(500).send(err)
         console.log(err);
@@ -291,7 +352,7 @@ app.post("/createCSVFile",jsonParser, async (req, res) =>{
 
 })
 
-app.post("/createJSONFile",jsonParser, async (req, res) =>{
+app.get("/createJSONFile",jsonParser, async (req, res) =>{
     const dataColumns=[
         "ime",
         "adresa",
@@ -352,6 +413,79 @@ app.post("/createJSONFile",jsonParser, async (req, res) =>{
         res.send(resultFaks);
     } catch (err) {
         console.log(err);
+    }  
+
+})
+
+app.post("/reloadFiles",jsonParser, async (req, res) =>{
+    
+    let dataColumns=[
+        "ime",
+        "adresa",
+        "dekan",
+        "eadresa",
+        "faks",
+        "telefon",
+        "webadresa",
+        "id",
+        "imestudija",
+        "razinastudija",
+        "brojsemestara",
+        "nacinizvedbe",
+        "akgodina",
+        "fakultetid"
+    ]
+   
+    let upit=`SELECT * FROM fakultet left join smjer on id=fakultetId`;
+    let sqlQuery = `COPY (${upit}) TO 'D:/otvarac/fakultetiZG/client/public/file.csv' DELIMITER ',' CSV HEADER;`;
+    
+    console.log(sqlQuery)
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    
+    try {
+        let resultFaks = (await db.query(sqlQuery, []));
+    } catch (err) {
+        res.send({msg:"CSV cannot be created"})
+        console.log(err);
+    }  
+
+
+    dataColumns=[
+        "ime",
+        "adresa",
+        "dekan",
+        "eadresa",
+        "faks",
+        "telefon",
+        "webadresa",
+        "id"
+    ]
+    
+    upit=`
+    DROP VIEW IF EXISTS filteredView2;
+    DROP VIEW IF EXISTS filteredView;
+    Create view filteredView as (
+        SELECT fakultet.*, (SELECT json_agg(row_to_json(smjer)) FROM SMJER where smjer.fakultetId=fakultet.id ) as smjerovi
+        FROM fakultet
+    );
+    Create view filteredView2 as (
+        SELECT filteredView.*
+        FROM filteredView
+    );
+    COPY (SELECT json_agg(row_to_json(filteredView2)) FROM filteredView2 ) TO 'D:/otvarac/fakultetiZG/client/public/file.json';
+    `;
+    sqlQuery = `${upit}`;
+    
+    console.log(sqlQuery)
+    
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    
+    try {
+        const resultFaks = (await db.query(sqlQuery, []));
+        res.send({msg:"Uspješno osvježeno"});
+    } catch (err) {
+        console.log(err);
+        res.send({msg:"JSON file se ne može stvoriti"});
     }  
 
 })

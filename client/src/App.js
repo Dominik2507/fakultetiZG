@@ -8,9 +8,12 @@ import Datatable from "./pages/Datatable";
 import SingleItem from "./pages/SingleItem"
 import Create from "./pages/Create";
 import Update from "./pages/Update";
+import Profile from "./pages/Profile";
 
+import { useAuth0 } from "@auth0/auth0-react";
 
 const App= ()=> {
+  
   
       return (
         <div className="App">
@@ -38,6 +41,11 @@ const App= ()=> {
               <Route exact path="/create"
                 element={
                   <Create/>
+                }
+              />
+              <Route exact path="/profile"
+                element={
+                  <Profile/>
                 }
               />
           </Routes>

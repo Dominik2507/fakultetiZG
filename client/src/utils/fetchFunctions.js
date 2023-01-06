@@ -1,4 +1,15 @@
-
+export async function reloadDump(){
+  document.getElementById("lastRefreshed").innerHTML=new Date()
+  return await fetch(`/reloadFiles`,{cors:"no-cors"})
+      .then((response) => {
+        if(response.ok){
+          let div=document.getElementById("errorMsg");
+          div.innerHTML=response.json().then(item=>item.msg)
+          div.hidden=false;
+        }
+      })
+      .catch((err) => console.log(err.message));
+}
 export async function getFakulteti(){
     return await fetch(`/getFaks`,{cors:"no-cors"})
       .then((response) => response.json())

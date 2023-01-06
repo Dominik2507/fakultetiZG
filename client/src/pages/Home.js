@@ -1,21 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-
+import LoginButton from "../components/LoginButton";
+import LogoutButton from "../components/LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import { reloadDump } from "../utils/fetchFunctions";
 
 const Home = (props) => {
-  
+  const {isLoading, error, isAuthenticated} = useAuth0();
+
   return (
     <>
       <MojDiv>
+        
         <h1>Podatci o fakultetima</h1>
+        {error && <p>Authentication Error</p>}
+        {!error && isLoading && <p>Loading...</p>}
+        {!error && !isLoading && (
+          <>
+            <LoginButton/>
+            <LogoutButton/>
+
+          </>
+        )}
         
         <p>
           <h2>Aplikacija</h2>
           <div>Web Aplikacija prikazuje podatke o fakultetima koje su sastavnice Sveučilišta u Zagrebu.</div>
           <div>Tablički prikaz podataka: <a href="/datatable"> DATATABLE</a></div>
-          <div>Podatci u CSV formatu: <a href="./file.csv" download="fakulteti" target="_blank">preuzmi-CSV</a></div>
-          <div>Podatci u JSON formatu: <a href="./file.json" download="fakulteti" target="_blank">preuzmi-JSON</a></div><br/>
-          <div>* Podatci zadnje ažurirani: 30.11.2022.</div>
+          {isAuthenticated && 
+          <>
+            <div>Podatci u CSV formatu: <a href="./file.csv" download="fakulteti" target="_blank">preuzmi-CSV</a></div>
+            <div>Podatci u JSON formatu: <a href="./file.json" download="fakulteti" target="_blank">preuzmi-JSON</a></div><br/>
+            <div><button onClick={reloadDump}>Osvježi preslike</button></div>
+            <div>* Podatci zadnje ažurirani: <span id="lastRefreshed">30.11.2022.</span></div>
+            <div id="errorMsg" hidden></div>
+          </>
+          }
+          
           <br></br>Podatci se nalaze u lokalnoj bazi podataka koja sadrži dvije tablice (Fakultet i Smjer). 
           Tablica Fakultet sadrži osnovne informacije o fakultetima. 
           Tablica Smjer sadrži zapise o smjerovima za fakultete navedene u tablici Fakultet. <br/><br/>
