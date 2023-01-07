@@ -301,10 +301,85 @@ app.delete('/fakultet/:id',async (req, res) => {
 });
 
 
+app.get("/reloadFiles", async (req, res) =>{
+    
+    let dataColumns=[
+        "ime",
+        "adresa",
+        "dekan",
+        "eadresa",
+        "faks",
+        "telefon",
+        "webadresa",
+        "id",
+        "imestudija",
+        "razinastudija",
+        "brojsemestara",
+        "nacinizvedbe",
+        "akgodina",
+        "fakultetid"
+    ]
+   
+    let upit=`SELECT * FROM fakultet left join smjer on id=fakultetId`;
+    let sqlQuery = `COPY (${upit}) TO 'D:/otvarac/fakultetiZG/client/public/file.csv' DELIMITER ',' CSV HEADER;`;
+    
+    console.log(sqlQuery)
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    
+    try {
+        let resultFaks = (await db.query(sqlQuery, []));
+    } catch (err) {
+        res.send({msg:"CSV cannot be created"})
+        console.log(err);
+    }  
+
+
+    dataColumns=[
+        "ime",
+        "adresa",
+        "dekan",
+        "eadresa",
+        "faks",
+        "telefon",
+        "webadresa",
+        "id"
+    ]
+    
+    upit=`
+    DROP VIEW IF EXISTS filteredView2;
+    DROP VIEW IF EXISTS filteredView;
+    Create view filteredView as (
+        SELECT fakultet.*, (SELECT json_agg(row_to_json(smjer)) FROM SMJER where smjer.fakultetId=fakultet.id ) as smjerovi
+        FROM fakultet
+    );
+    Create view filteredView2 as (
+        SELECT filteredView.*
+        FROM filteredView
+    );
+    COPY (SELECT json_agg(row_to_json(filteredView2)) FROM filteredView2 ) TO 'D:/otvarac/fakultetiZG/client/public/file.json';
+    `;
+    sqlQuery = `${upit}`;
+    
+    console.log(sqlQuery)
+    
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+    
+    try {
+        const resultFaks = (await db.query(sqlQuery, []));
+        res.send({msg:"Uspješno osvježeno"});
+    } catch (err) {
+        console.log(err);
+        res.send({msg:"JSON file se ne može stvoriti"});
+    }  
+
+})
+
 app.get('/getOpenAPI',async (req, res) => { //Line 9
     
     res.status(200).json(OpenApi);
 });
+
+
 
 //danji dio nije dio 3.laboratorijske vježbe i bit će dorađen nakonadno
 app.post("/createCSVFile",jsonParser, async (req, res) =>{
@@ -416,80 +491,6 @@ app.get("/createJSONFile",jsonParser, async (req, res) =>{
     }  
 
 })
-
-app.post("/reloadFiles",jsonParser, async (req, res) =>{
-    
-    let dataColumns=[
-        "ime",
-        "adresa",
-        "dekan",
-        "eadresa",
-        "faks",
-        "telefon",
-        "webadresa",
-        "id",
-        "imestudija",
-        "razinastudija",
-        "brojsemestara",
-        "nacinizvedbe",
-        "akgodina",
-        "fakultetid"
-    ]
-   
-    let upit=`SELECT * FROM fakultet left join smjer on id=fakultetId`;
-    let sqlQuery = `COPY (${upit}) TO 'D:/otvarac/fakultetiZG/client/public/file.csv' DELIMITER ',' CSV HEADER;`;
-    
-    console.log(sqlQuery)
-    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-    
-    try {
-        let resultFaks = (await db.query(sqlQuery, []));
-    } catch (err) {
-        res.send({msg:"CSV cannot be created"})
-        console.log(err);
-    }  
-
-
-    dataColumns=[
-        "ime",
-        "adresa",
-        "dekan",
-        "eadresa",
-        "faks",
-        "telefon",
-        "webadresa",
-        "id"
-    ]
-    
-    upit=`
-    DROP VIEW IF EXISTS filteredView2;
-    DROP VIEW IF EXISTS filteredView;
-    Create view filteredView as (
-        SELECT fakultet.*, (SELECT json_agg(row_to_json(smjer)) FROM SMJER where smjer.fakultetId=fakultet.id ) as smjerovi
-        FROM fakultet
-    );
-    Create view filteredView2 as (
-        SELECT filteredView.*
-        FROM filteredView
-    );
-    COPY (SELECT json_agg(row_to_json(filteredView2)) FROM filteredView2 ) TO 'D:/otvarac/fakultetiZG/client/public/file.json';
-    `;
-    sqlQuery = `${upit}`;
-    
-    console.log(sqlQuery)
-    
-    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-    
-    try {
-        const resultFaks = (await db.query(sqlQuery, []));
-        res.send({msg:"Uspješno osvježeno"});
-    } catch (err) {
-        console.log(err);
-        res.send({msg:"JSON file se ne može stvoriti"});
-    }  
-
-})
-
 
   /*
 //uvoz modula

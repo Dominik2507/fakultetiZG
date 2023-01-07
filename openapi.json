@@ -148,6 +148,21 @@
                 }
             }
         },
+        "/reloadFiles":{
+            "get": {
+                "summary": "Refreshes CSV and JSON file for export from main page",
+                "description": "Returns a message about success of refresh",
+                "produces": ["text"],
+                "responses": {
+                    "200":{
+                        "description": "Refresh successfull"
+                    },
+                    "500":{
+                        "description": "Server error"
+                    }
+                }
+            }
+        },
         "/getOpenAPI":{
             "get": {
                 "summary": "Gets a JSON object with the whole collection",
