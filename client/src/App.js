@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
 
@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const App= ()=> {
-  
+   const { isAuthenticated} = useAuth0();
   
       return (
         <div className="App">
@@ -45,7 +45,7 @@ const App= ()=> {
               />
               <Route exact path="/profile"
                 element={
-                  <Profile/>
+                  isAuthenticated ? <Profile/> : <Navigate to="/"/>
                 }
               />
           </Routes>
